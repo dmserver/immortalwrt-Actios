@@ -36,6 +36,7 @@ on:
         type: choice
         options:
           - lkiuyu/immortalwrt
+          - immortalwrt/immortalwrt
         default: lkiuyu/immortalwrt
         required: true
       custom_hash:
@@ -368,7 +369,7 @@ jobs:
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")-${PROFILE}" >> $GITHUB_OUTPUT
         touch release.txt
         {
-          echo "## Immortalwrt master分支 高通410系列 · ${PROFILE}"
+          echo "## ${{ github.event.inputs.upstream }} 分支 高通410系列 · ${PROFILE}"
           echo ""
           echo "| 项目 | 信息 |"
           echo "|------|------|"
@@ -382,7 +383,7 @@ jobs:
           echo ""
           if [ -n "$EXTRA" ]; then
             echo "### 额外添加的包"
-            echo "$EXTRA" | sed 's/^/- /'
+            echo "$EXTRA" | sed 's/^/ , /'
           else
             echo "### 额外添加的包"
             echo "无"

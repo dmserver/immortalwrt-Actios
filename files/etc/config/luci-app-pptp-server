@@ -1,0 +1,19 @@
+
+config service 'pptpd'
+	option localip '192.168.101.254'
+	option remoteip '192.168.101.30-50'
+	option enabled '1'
+	option nat '1'
+	option internet '1'
+	option mppe '0'
+
+config users
+	option enabled '1'
+	option username 'ikuai'
+	option password 'ikuai'
+
+config users
+	option enabled '1'
+	option username 'win'
+	option password 'win'
+

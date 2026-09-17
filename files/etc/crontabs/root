@@ -1,0 +1,10 @@
+#*/1 * * * * /bin/chmod 7777 /etc/auto-sh/gwip.sh && /bin/bash /etc/auto-sh/gwip.sh >/dev/null 2>&1 &
+0 * * * * /bin/chmod 7777 /etc/auto-sh/cn.sh && /bin/bash /etc/auto-sh/cn.sh >/dev/null 2>&1 &
+0 * * * * /bin/chmod 7777 /etc/auto-sh/gfw.sh && /bin/bash /etc/auto-sh/gfw.sh >/dev/null 2>&1 &
+0 6 * * * /usr/share/openclash/openclash.sh #openclash-cron-task
+0 0 * * 1 /usr/share/openclash/openclash_geo.sh ipdb #openclash-cron-task
+0 0 * * 1 /usr/share/openclash/openclash_geo.sh geosite #openclash-cron-task
+0 0 * * 1 /usr/share/openclash/openclash_geo.sh geoip #openclash-cron-task
+0 0 * * 1 /usr/share/openclash/openclash_geo.sh geoasn #openclash-cron-task
+0 0 * * 1 /usr/share/openclash/openclash_chnroute.sh #openclash-cron-task
+0 7 * * * /etc/init.d/openclash restart #openclash-cron-task

@@ -1,0 +1,37 @@
+# ETag Cache File
+
+[d4e0ee91057c6f5b6caf0f6e99ec7af0]
+url="https://codeload.github.com/MetaCubeX/Razord-meta/zip/refs/heads/gh-pages"
+path="/usr/share/openclash/ui/dashboard/"
+etag="baee24ecdf4266982f9d615429055847f358c3f097b5581ef3a86d39bb2437e4"
+time="2026-09-13 19:20:22"
+
+[6dea3302212ed0cbaced7494375ad007]
+url="https://codeload.github.com/MetaCubeX/Yacd-meta/zip/refs/heads/gh-pages"
+path="/usr/share/openclash/ui/yacd/"
+etag="2f6611321d1cba76d8c1efe37aa2f47666c1637ce9bb9c0dfecb951dbd6437e7"
+time="2026-09-13 19:24:32"
+
+[6ebbc279122240207fd72360d9dbe954]
+url="https://gh-proxy.com/https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
+path="/etc/openclash/core/clash_meta"
+etag="W/"6c8dbf62f3a5ba823353c07b84f1da37b18a566c10013856913eb9890cddc2cd"
+time="2026-09-13 19:25:55"
+
+[9da2a72bd6fa267c6c02df3805f91a0a]
+url="https://ispip.clang.cn/all_cn.txt"
+path="/etc/openclash/china_ip_route.ipset"
+etag="6aa57733-1050a"
+time="2026-09-14 00:00:01"
+
+[3711f2bf74687c885ffdedee3b0d0fdc]
+url="https://ispip.clang.cn/all_cn_ipv6.txt"
+path="/etc/openclash/china_ip6_route.ipset"
+etag="6aa57733-74db"
+time="2026-09-14 00:00:02"
+
+[8a549da80b9a69b3a615435943f90d8d]
+url="https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+path="/etc/openclash/GeoIP.dat"
+etag="W/"1044bfa-3dcWAGh80IVe1Dod+tG3QWYYDg0"
+time="2026-09-14 00:00:07"

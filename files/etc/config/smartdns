@@ -1,0 +1,390 @@
+
+config smartdns
+	option server_name 'smartdns'
+	option tcp_server '1'
+	option seconddns_tcp_server '1'
+	option prefetch_domain '1'
+	option dualstack_ip_selection '1'
+	option seconddns_no_cache '1'
+	option seconddns_port '5335'
+	option seconddns_server_group 'www'
+	option seconddns_no_speed_check '1'
+	option port '530'
+	option ipv6_server '1'
+	option serve_expired '1'
+	option resolve_local_hostnames '1'
+	option force_https_soa '0'
+	option auto_set_dnsmasq '0'
+	option bind_device '1'
+	option cache_persist '1'
+	option cache_size '1000'
+	option enabled '1'
+	option rr_ttl '300'
+	option rr_ttl_min '60'
+	option rr_ttl_max '300'
+	option tls_server '0'
+	option doh_server '0'
+	option ui '1'
+	option ui_port '3001'
+	option log_output_mode 'file'
+	option old_port '530'
+	option old_enabled '1'
+	option old_auto_set_dnsmasq '0'
+
+config domain-rule
+
+config client-rule
+	option enabled '0'
+	option dualstack_ip_selection '1'
+	option force_https_soa '0'
+
+config ip-rule
+
+config domain-rule-list
+	option enabled '1'
+	option name 'china'
+	option server_group 'china'
+	option domain_list_file '/etc/smartdns/domain-set/cn.conf'
+	option block_domain_type 'none'
+
+config domain-rule-list
+	option enabled '1'
+	option name 'world'
+	option server_group 'world'
+	option domain_list_file '/etc/smartdns/domain-set/gfw.conf'
+	option block_domain_type 'none'
+
+config server
+	option enabled '1'
+	option name '阿里'
+	option ip '223.5.5.5/dns-query'
+	option type 'https'
+	option server_group 'china'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name '阿里'
+	option ip 'dns.alidns.com'
+	option port '853'
+	option type 'tls'
+	option server_group 'china'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name '阿里'
+	option ip '223.6.6.6'
+	option type 'udp'
+	option server_group 'china'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name '阿里'
+	option ip '2400:3200::1'
+	option type 'udp'
+	option server_group 'china'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name '阿里'
+	option ip '223.5.5.5'
+	option type 'tls'
+	option server_group 'china'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name '腾讯'
+	option ip 'doh.pub/dns-query'
+	option type 'https'
+	option server_group 'china'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name '腾讯'
+	option ip 'sm2.doh.pub/dns-query'
+	option type 'https'
+	option server_group 'china'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name '腾讯'
+	option ip 'dot.pub'
+	option port '853'
+	option type 'tls'
+	option server_group 'china'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name '腾讯'
+	option ip '119.29.29.29'
+	option type 'udp'
+	option server_group 'china'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name '腾讯'
+	option ip '2402:4e00::'
+	option type 'udp'
+	option server_group 'china'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name 'Cloudflare'
+	option ip '1.1.1.1'
+	option type 'tls'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name 'Cloudflare'
+	option ip 'cloudflare-dns.com/dns-query'
+	option type 'https'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'Cloudflare'
+	option ip 'one.one.one.one'
+	option port '853'
+	option type 'tls'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name 'Cloudflare'
+	option ip '1.1.1.1'
+	option type 'udp'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name 'Cloudflare'
+	option ip '2606:4700:4700::1111'
+	option type 'udp'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name '谷歌'
+	option ip 'dns.google/dns-query'
+	option type 'https'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name '谷歌'
+	option ip 'dns.google'
+	option port '853'
+	option type 'tls'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name '谷歌'
+	option ip '8.8.4.4'
+	option type 'udp'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name '谷歌'
+	option ip '2001:4860:4860::8888'
+	option type 'udp'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'twnic'
+	option ip 'dns.twnic.tw/dns-query'
+	option type 'https'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'twnic'
+	option ip '101.101.101.101'
+	option type 'udp'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'twnic'
+	option ip '2001:de4::101'
+	option type 'udp'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'quad9'
+	option ip 'dns.quad9.net'
+	option port '853'
+	option type 'tls'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'quad9'
+	option ip 'dns.quad9.net/dns-query'
+	option type 'https'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'quad9'
+	option ip '9.9.9.9'
+	option type 'udp'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'quad9'
+	option ip '2620:fe::9'
+	option type 'udp'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'opendns'
+	option ip 'doh.opendns.com/dns-query'
+	option type 'https'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'opendns'
+	option ip 'dns.umbrella.com'
+	option port '853'
+	option type 'tls'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'opendns'
+	option ip '208.67.222.222'
+	option type 'udp'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'opendns'
+	option ip '2620:0:ccc::2'
+	option type 'udp'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'dns.sb'
+	option ip 'doh.dns.sb/dns-query'
+	option type 'https'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'dns.sb'
+	option ip 'dot.sb'
+	option port '853'
+	option type 'tls'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'dns.sb'
+	option ip '185.222.222.222'
+	option type 'udp'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '0'
+	option name 'dns.sb'
+	option ip '2a09::'
+	option type 'udp'
+	option server_group 'world'
+	option exclude_default_group '1'
+
+config server
+	option enabled '1'
+	option name '百度'
+	option ip '180.76.76.76'
+	option type 'udp'
+	option server_group 'china'
+
+config server
+	option enabled '1'
+	option name '百度'
+	option ip '2400:da00::6666'
+	option type 'udp'
+	option server_group 'china'
+
+config server
+	option enabled '1'
+	option name '114'
+	option ip '114.114.114.114'
+	option type 'udp'
+	option server_group 'china'
+
+config server
+	option enabled '0'
+	option name '360'
+	option ip 'doh.360.cn'
+	option type 'https'
+
+config server
+	option enabled '0'
+	option name '360'
+	option ip 'dot.360.cn'
+	option port '853'
+	option type 'tls'
+
+config server
+	option enabled '0'
+	option name 'CNNIC DNS'
+	option ip '1.2.4.8'
+	option type 'udp'
+	option server_group 'china'
+
+config server
+	option enabled '0'
+	option name 'CNNIC DNS'
+	option ip '210.2.4.8'
+	option type 'udp'
+	option server_group 'china'
+
+config server
+	option enabled '0'
+	option name 'CNNIC DNS'
+	option ip '2001:dc7:1000::1'
+	option type 'udp'
+	option server_group 'china'
+

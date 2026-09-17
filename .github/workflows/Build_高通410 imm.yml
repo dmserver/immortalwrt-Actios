@@ -49,11 +49,17 @@ on:
         required: false
         default: ''
         type: string
+      extra_names:
+        description: ' ↓ 输入标签后缀名称用于区分Release ↓ '
+        required: true
+        default: ''
+        type: string
       extra_name:
-        description: ' ↓ 输入标签名称用于区分固件 ↓ '
+        description: ' ↓ 输入标签用于区分应用信息 ↓ '
         required: false
         default: ''
         type: string
+      
 
 env:
   REPO_URL: https://github.com/${{ github.event.inputs.upstream }}
@@ -365,13 +371,14 @@ jobs:
         # 提取用户设置的 IP 和主机名
         RAW='${{ inputs.extra_packages }}'
         RAW_TPTAG='${{ inputs.extra_name }}'
+        RAW_TPREL='${{ inputs.extra_names }}'
         CUSTOM_IP=$(echo "$RAW" | grep -oP '(?<=__ip__)[^,\s]+' || true)
         CUSTOM_HOSTNAME=$(echo "$RAW" | grep -oP '(?<=__hostname__)[^,\s]+' || true)
         DISPLAY_IP=${CUSTOM_IP:-192.168.1.1}
         DISPLAY_HOSTNAME=${CUSTOM_HOSTNAME:-ImmortalWrt}
         # 过滤掉特殊前缀，只显示真正的包名
         EXTRA=$(echo "$RAW" | sed 's/,/ /g' | tr ' ' '\n' | grep -v '^__ip__' | grep -v '^__hostname__' | sed '/^$/d')
-        echo "release_tag=${PROFILE}-${RAW_TPTAG}" >> $GITHUB_OUTPUT
+        echo "release_tag=${PROFILE}-${RAW_TPREL}" >> $GITHUB_OUTPUT
         touch release.txt
         {
           if [ -n "$EXTRA" ]; then

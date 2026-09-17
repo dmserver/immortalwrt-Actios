@@ -371,12 +371,13 @@ jobs:
         DISPLAY_HOSTNAME=${CUSTOM_HOSTNAME:-ImmortalWrt}
         # 过滤掉特殊前缀，只显示真正的包名
         EXTRA=$(echo "$RAW" | sed 's/,/ /g' | tr ' ' '\n' | grep -v '^__ip__' | grep -v '^__hostname__' | sed '/^$/d')
-        echo "release_tag=$(date +"%Y.%m.%d-%H%M")-${PROFILE}-${RAW_TPTAG}" >> $GITHUB_OUTPUT
+        echo "release_tag=${PROFILE}-${RAW_TPTAG}" >> $GITHUB_OUTPUT
         touch release.txt
         {
           if [ -n "$EXTRA" ]; then
             echo "### 额外添加的包"
-            echo "$EXTRA" | sed 's/^/,/'
+            EXTRAS=$(echo "$EXTRA" | sed 's/^/,/' | tr -d '\n')
+            echo "- $EXTRAS" 
           else
             echo "### 额外添加的包"
             echo "无"
@@ -385,7 +386,7 @@ jobs:
           echo "| 项目 | 信息 |"
           echo "|------|------|"
           echo "| 编译者 | ${{ github.actor }} |"
-          echo "| 机型 | ${PROFILE} ${RAW_TPTAG} |"
+          echo "| 固件信息 | ${PROFILE} ( ${RAW_TPTAG} ) |"
           echo "| 管理地址 | ${DISPLAY_IP} root 无密码 |"
           echo "| | |"
           echo "| tailscale | tailscale在源安装 面板在https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community/releases |"

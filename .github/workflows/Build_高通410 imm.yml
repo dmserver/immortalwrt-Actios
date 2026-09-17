@@ -49,6 +49,11 @@ on:
         required: false
         default: ''
         type: string
+      extra_name:
+        description: ' ↓ 输入标签名称用于区分固件 ↓ '
+        required: false
+        default: ''
+        type: string
 
 env:
   REPO_URL: https://github.com/${{ github.event.inputs.upstream }}
@@ -359,35 +364,32 @@ jobs:
         PROFILE=${{ github.event.inputs.profile }}
         # 提取用户设置的 IP 和主机名
         RAW='${{ inputs.extra_packages }}'
+        RAW_TPTAG='${{ inputs.extra_name }}'
         CUSTOM_IP=$(echo "$RAW" | grep -oP '(?<=__ip__)[^,\s]+' || true)
         CUSTOM_HOSTNAME=$(echo "$RAW" | grep -oP '(?<=__hostname__)[^,\s]+' || true)
         DISPLAY_IP=${CUSTOM_IP:-192.168.1.1}
         DISPLAY_HOSTNAME=${CUSTOM_HOSTNAME:-ImmortalWrt}
         # 过滤掉特殊前缀，只显示真正的包名
         EXTRA=$(echo "$RAW" | sed 's/,/ /g' | tr ' ' '\n' | grep -v '^__ip__' | grep -v '^__hostname__' | sed '/^$/d')
-
-        echo "release_tag=$(date +"%Y.%m.%d-%H%M")-${PROFILE}" >> $GITHUB_OUTPUT
+        echo "release_tag=$(date +"%Y.%m.%d-%H%M")-${PROFILE}-${RAW_TPTAG}" >> $GITHUB_OUTPUT
         touch release.txt
         {
-          echo "## ${{ github.event.inputs.upstream }} 分支 高通410系列 · ${PROFILE}"
-          echo ""
-          echo "| 项目 | 信息 |"
-          echo "|------|------|"
-          echo "| 编译者 | ${{ github.actor }} |"
-          echo "| 机型 | ${PROFILE} |"
-          echo "| 内核版本 | ${{ env.KERNEL_VER }} |"
-          echo "| 管理地址 | ${DISPLAY_IP} |"
-          echo "| 主机名 | ${DISPLAY_HOSTNAME} |"
-          echo "| 默认用户 | root |"
-          echo "| 默认密码 | 空 |"
-          echo ""
           if [ -n "$EXTRA" ]; then
             echo "### 额外添加的包"
-            echo "$EXTRA" | sed 's/^/ , /'
+            echo "$EXTRA" | sed 's/^/,/'
           else
             echo "### 额外添加的包"
             echo "无"
           fi
+          echo ""
+          echo "| 项目 | 信息 |"
+          echo "|------|------|"
+          echo "| 编译者 | ${{ github.actor }} |"
+          echo "| 机型 | ${PROFILE} ${RAW_TPTAG} |"
+          echo "| 管理地址 | ${DISPLAY_IP} root 无密码 |"
+          echo "| | |"
+          echo "| tailscale | tailscale在源安装 面板在https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community/releases |"
+          echo "| smartdns | 若无ui或无法启动，可在软件包卸载后进ssh安装 /etc/smartdns-ipk 下的版本 |"
         } >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 

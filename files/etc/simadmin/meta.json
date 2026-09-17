@@ -1,0 +1,11 @@
+{
+    "version": "1.2.0",
+    "commit": "50597b4",
+    "build_time": "2026-09-12T20:08:02+08:00",
+    "binary_md5": "8341c64a84139f6572097750da9a1bcf",
+    "frontend_md5": "9df5d5e2a532befb74ef7fbedb34c7e3",
+    "arch": "aarch64-unknown-linux-musl",
+    "edition": "full",
+    "volte": true,
+    "wificalling": true
+}

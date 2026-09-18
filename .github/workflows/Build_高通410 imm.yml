@@ -398,6 +398,7 @@ jobs:
           echo "| | |"
           echo "| tailscale | tailscale在源安装 面板在https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community/releases |"
           echo "| smartdns | 若无ui或无法启动，可在软件包卸载后进ssh安装 /etc/smartdns-ipk 下的版本 |"
+          echo "| Mihomo | 下载安装https://github.com/nikkinikki-org/OpenWrt-nikki/releases |"
         } >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 

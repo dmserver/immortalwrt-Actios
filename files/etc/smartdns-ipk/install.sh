@@ -3,7 +3,7 @@
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-opkg remove smartdns
+opkg remove smartdns --force-depends
 cd /etc/smartdns-ipk
 opkg install /etc/smartdns-ipk/1.ipk
 sleep 1s

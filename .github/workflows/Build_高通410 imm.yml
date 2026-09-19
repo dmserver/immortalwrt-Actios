@@ -378,7 +378,8 @@ jobs:
         DISPLAY_HOSTNAME=${CUSTOM_HOSTNAME:-ImmortalWrt}
         # 过滤掉特殊前缀，只显示真正的包名
         EXTRA=$(echo "$RAW" | sed 's/,/ /g' | tr ' ' '\n' | grep -v '^__ip__' | grep -v '^__hostname__' | sed '/^$/d')
-        echo "release_tag=${PROFILE}-${RAW_TPREL}" >> $GITHUB_OUTPUT
+        TAG_TM=$(date +"%y%m%d-%H%M")
+        echo "release_tag=${PROFILE}-${RAW_TPREL}-${TAG_TM}" >> $GITHUB_OUTPUT
         touch release.txt
         {
           if [ -n "$EXTRA" ]; then
@@ -399,6 +400,10 @@ jobs:
           echo "| tailscale | tailscale在源安装 面板在https://github.com/Tokisaki-Galaxy/luci-app-tailscale-community/releases |"
           echo "| smartdns | 若无ui或无法启动，可在软件包卸载后进ssh安装 /etc/smartdns-ipk 下的版本 |"
           echo "| Mihomo | 下载安装https://github.com/nikkinikki-org/OpenWrt-nikki/releases |"
+          echo "| softethervpn-控制台 | 下载安装https://github.com/SoftEtherVPN/SoftEtherVPN |"
+          echo "| softethervpn-luci | 下载安装https://github.com/superzjg/luci-app-softethervpn |"
+          echo "| softethervpn | 下载安装https://github.com/SoftEtherVPN/SoftEtherVPN_Stable |"
+          
         } >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 

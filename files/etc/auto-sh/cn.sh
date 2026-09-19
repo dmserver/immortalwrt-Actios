@@ -5,6 +5,13 @@ echo "当前脚本缓存: $filename"
 mkdir -p /tmp/smartdns-conf/domain
 mkdir -p /tmp/smartdns-conf/tmp
 mkdir -p /etc/smartdns/domain-set
+ping -c 1 223.5.5.5 > /dev/null 2>&1
+if [ $? -eq 0 ];then
+		echo "网络正常" 
+	else
+		echo "网络异常" 
+		exit 0
+fi
 #中国域名列表
 DOMAIN_LIST_ARR=("https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/refs/heads/release/direct-list.txt" "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/refs/heads/release/apple-cn.txt" "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/refs/heads/release/google-cn.txt")
 #

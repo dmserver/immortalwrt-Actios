@@ -4,6 +4,13 @@ filename=$(basename "$0" .sh | tr -d '\n')
 echo "当前脚本缓存: $filename"
 mkdir -p /tmp/smartdns-conf/domain
 mkdir -p /tmp/smartdns-conf/tmp
+ping -c 1 223.5.5.5 > /dev/null 2>&1
+if [ $? -eq 0 ];then
+		echo "网络正常" 
+	else
+		echo "网络异常" 
+		exit 0
+fi
 #中国域名列表
 DOMAIN_LIST_ARR=("https://raw.githubusercontent.com/zxlhhyccc/smartdns-list-scripts/refs/heads/master/proxy-domain-list.conf")
 
